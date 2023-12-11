@@ -3,7 +3,7 @@ import { TodoDAO } from "../../core/TodoDAO";
 import useFetchTodos from "../../hooks/useFetchTodos";
 import TodoRow from "./TodoRow";
 
-interface ITodoListProps{
+export interface ITodoListProps{
   todos:Todo[]
   isLoading: boolean
   doDelete:(todo:Todo)=>void
