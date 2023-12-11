@@ -15,7 +15,7 @@ export class TodoDAO implements DAO<Todo>{
     }
 
     save(o: Todo): Promise<Todo> {
-        throw new Error("Method not implemented.");
+        return fetch(import.meta.env.VITE_TODOS_URL,{method:"POST",headers:{"Content-type":"application/json"},body:JSON.stringify(o)}).then(resp => resp.json())
     }
 
 
