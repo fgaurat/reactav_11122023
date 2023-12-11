@@ -3,16 +3,16 @@ import { TodoDAO } from "../../core/TodoDAO";
 import useFetchTodos from "../../hooks/useFetchTodos";
 import TodoRow from "./TodoRow";
 
-export default function TodoList() {
+interface ITodoListProps{
+  todos:Todo[]
+  isLoading: boolean
+  doDelete:(todo:Todo)=>void
+}
 
-  const {todos,setTodos,isLoading} = useFetchTodos()
+export default function TodoList({todos,isLoading,doDelete}:ITodoListProps) {
 
-  const doDelete = async (todo:Todo)=>{
-    const dao = new TodoDAO()
-    await dao.delete(todo)
-    const filteredTodos = todos.filter( t => t.id!== todo.id)
-    setTodos(filteredTodos)
-  }
+  
+
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">

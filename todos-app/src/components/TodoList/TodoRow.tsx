@@ -1,11 +1,11 @@
 import { Todo } from '../../core/Todo'
 
-interface TodoRowProps{
+interface ITodoRowProps{
     todo:Todo
     doDelete:(todo:Todo)=>void
 }
 
-const TodoRow = ({todo,doDelete}:TodoRowProps) => {
+const TodoRow = ({todo,doDelete}:ITodoRowProps) => {
 
   return (
     <tr >
