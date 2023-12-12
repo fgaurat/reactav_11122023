@@ -1,18 +1,17 @@
+import { useSelector } from "react-redux";
 import { Todo } from "../../core/Todo";
-import { TodoDAO } from "../../core/TodoDAO";
-import useFetchTodos from "../../hooks/useFetchTodos";
 import TodoRow from "./TodoRow";
+import { RootState } from "../../app/store";
 
-export interface ITodoListProps{
-  todos:Todo[]
-  isLoading: boolean
-  doDelete:(todo:Todo)=>void
-}
 
-export default function TodoList({todos,isLoading,doDelete}:ITodoListProps) {
+export default function TodoList() {
 
-  
 
+    const todos = useSelector((state:RootState)=>state.todoList.todos)
+
+    const doDelete = (todo:Todo)=>{
+      console.log(todo)
+    }
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
@@ -26,8 +25,8 @@ export default function TodoList({todos,isLoading,doDelete}:ITodoListProps) {
       <div className="mt-8 flow-root">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-            {isLoading && "Loading"}
-            {!isLoading &&
+            {/* {isLoading && "Loading"} */}
+            {/* {!isLoading && */}
             <table className="min-w-full divide-y divide-gray-300">
               <thead>
                 <tr>
@@ -66,7 +65,7 @@ export default function TodoList({todos,isLoading,doDelete}:ITodoListProps) {
                 ))}
               </tbody>
             </table>
-            }
+            {/* } */}
           </div>
         </div>
       </div>
