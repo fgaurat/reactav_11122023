@@ -1,14 +1,20 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Todo } from "../../core/Todo";
 import TodoRow from "./TodoRow";
-import { RootState } from "../../app/store";
+import { AppDispatch, RootState } from "../../app/store";
+import { useEffect } from "react";
+import { fetchTodoList } from "../../features/todoList/todoListSlice";
 
 
 export default function TodoList() {
 
 
     const todos = useSelector((state:RootState)=>state.todoList.todos)
+    const dispatch = useDispatch<AppDispatch>()
 
+    useEffect(()=>{
+      dispatch(fetchTodoList())
+    },[])
     const doDelete = (todo:Todo)=>{
       console.log(todo)
     }
