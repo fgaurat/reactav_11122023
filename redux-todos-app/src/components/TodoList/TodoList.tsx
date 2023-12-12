@@ -3,7 +3,7 @@ import { Todo } from "../../core/Todo";
 import TodoRow from "./TodoRow";
 import { AppDispatch, RootState } from "../../app/store";
 import { useEffect } from "react";
-import { fetchTodoList } from "../../features/todoList/todoListSlice";
+import { deleteTodo, fetchTodoList } from "../../features/todoList/todoListSlice";
 
 
 export default function TodoList() {
@@ -15,8 +15,9 @@ export default function TodoList() {
     useEffect(()=>{
       dispatch(fetchTodoList())
     },[])
+    
     const doDelete = (todo:Todo)=>{
-      console.log(todo)
+      dispatch(deleteTodo(todo))
     }
 
   return (
