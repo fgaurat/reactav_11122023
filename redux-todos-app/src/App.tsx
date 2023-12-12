@@ -1,13 +1,15 @@
 import TodoForm from './components/TodoForm/TodoForm'
 import TodoList from './components/TodoList/TodoList'
+import TodoListRTK from './components/TodoListRTK/TodoListRTK'
 
 function App() {
 
   return (
     <>
-    <TodoForm/>
+    {/* <TodoForm/> */}
     <hr />
-    <TodoList/>
+    {/* <TodoList/> */}
+    <TodoListRTK/>
     </>
   )
 }
