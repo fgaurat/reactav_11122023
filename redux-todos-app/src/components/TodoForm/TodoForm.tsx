@@ -1,15 +1,20 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Todo } from "../../core/Todo";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../app/store";
+import { saveTodo } from "../../features/todoList/todoListSlice";
 
 interface ITodoForm {
   title: string;
   completed: boolean;
 }
 
-interface ITodoFormProps {
-  submitTodo: (todo: Todo) => void;
-}
-function TodoForm({ submitTodo }: ITodoFormProps) {
+
+function TodoForm() {
+
+  const dispatch = useDispatch<AppDispatch>()
+
+
   const {
     register,
     handleSubmit,
@@ -18,7 +23,7 @@ function TodoForm({ submitTodo }: ITodoFormProps) {
   } = useForm<ITodoForm>();
 
   const onSubmit: SubmitHandler<ITodoForm> = (data) => {
-    submitTodo(data);
+    dispatch(saveTodo(data))
   };
 
   return (
