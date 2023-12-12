@@ -1,7 +1,7 @@
 import React from "react";
 
 function PureComponent02({ onClick }) {
-  console.log("render PureComponent02 ", value);
+  console.log("render PureComponent02 ");
 
   return (
     <div>
