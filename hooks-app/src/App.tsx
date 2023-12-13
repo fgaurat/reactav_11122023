@@ -6,6 +6,8 @@ import UseMemo from "./components/UseMemo/UseMemo";
 import PureComponent01 from "./components/PureComponent01/PureComponent01";
 import PureComponent02 from "./components/PureComponent02/PureComponent02";
 import UseRef from "./components/UseRef/UseRef";
+import UseTransition from "./components/UseTransition/UseTransition";
+import UseDeferredValue from "./components/UseDeferredValue/UseDeferredValue";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -42,7 +44,7 @@ function App() {
   return (
     <>
       <h1>TP Hooks</h1>
-
+{/* 
       <button onClick={() => setShow((s) => !s)}>
         {show ? "Hide" : "Show"} value
       </button>
@@ -67,7 +69,10 @@ function App() {
       <UseRef ref = {componentRef}/>
       <button onClick={()=>clickComponentRef()}>clickComponentRef</button>
       <button onClick={()=>clickComponentRefSetFocus()}>set focus</button>
-      <br />
+      <br /> 
+      <UseTransition/>
+      */}
+      <UseDeferredValue/>
     </>
   );
 }
