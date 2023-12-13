@@ -1,4 +1,3 @@
-import React from 'react'
 import { ITodoListProps } from '../TodoList/TodoList'
 import { Todo } from '../../core/Todo'
 

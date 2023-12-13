@@ -1,14 +1,20 @@
-import HOCCompletedTodoList from "../../components/HOCCompletedTodoList/HOCCompletedTodoList";
-import TodoForm from "../../components/TodoForm/TodoForm";
-import TodoList from "../../components/TodoList/TodoList";
+// import HOCCompletedTodoList from "../../components/HOCCompletedTodoList/HOCCompletedTodoList";
+import { Suspense, lazy } from "react";
 import { Todo } from "../../core/Todo";
 import { TodoDAO } from "../../core/TodoDAO";
 import useFetchTodos from "../../hooks/useFetchTodos";
+import Spinner from "../../components/Spinner/Spinner";
+
+// import TodoForm from "../../components/TodoForm/TodoForm";
+const TodoForm = lazy(() => import("../../components/TodoForm/TodoForm"));
+
+// import TodoList from "../../components/TodoList/TodoList";
+const TodoList = lazy(() => import("../../components/TodoList/TodoList"));
 
 function Home() {
   const { todos, setTodos, isLoading } = useFetchTodos();
 
-  const CompletedTodoList = HOCCompletedTodoList(TodoList);
+  // const CompletedTodoList = HOCCompletedTodoList(TodoList);
 
   const doDelete = async (todo: Todo) => {
     const dao = new TodoDAO();
@@ -23,18 +29,24 @@ function Home() {
     setTodos([...todos, newTodo]);
   };
 
-  
   return (
     <div>
       <h1 className="text-3xl font-bold underline">Home</h1>
-      <TodoForm submitTodo={submitTodo} />
+      <Suspense fallback={<Spinner/>} >
+        <TodoForm submitTodo={submitTodo} />
+      </Suspense>
+      
       <hr />
-      {/* <TodoList todos={todos} isLoading={isLoading} doDelete={doDelete}/> */}
-      <CompletedTodoList
+      
+      <Suspense fallback={<Spinner/>} >
+        <TodoList todos={todos} isLoading={isLoading} doDelete={doDelete} />
+      </Suspense>
+
+      {/* <CompletedTodoList
         todos={todos}
         isLoading={isLoading}
         doDelete={doDelete}
-      />
+      /> */}
     </div>
   );
 }

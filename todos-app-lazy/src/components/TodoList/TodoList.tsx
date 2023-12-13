@@ -1,6 +1,4 @@
 import { Todo } from "../../core/Todo";
-import { TodoDAO } from "../../core/TodoDAO";
-import useFetchTodos from "../../hooks/useFetchTodos";
 import TodoRow from "./TodoRow";
 
 export interface ITodoListProps{

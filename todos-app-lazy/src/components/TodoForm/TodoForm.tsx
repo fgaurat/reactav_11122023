@@ -13,8 +13,6 @@ function TodoForm({ submitTodo }: ITodoFormProps) {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
   } = useForm<ITodoForm>();
 
   const onSubmit: SubmitHandler<ITodoForm> = (data) => {
